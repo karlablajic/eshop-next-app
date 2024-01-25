@@ -1,7 +1,6 @@
 import { Inter } from 'next/font/google';
 import './globals.css';
 import Nav from '@/components/Nav';
-import Footer from '@/components/Footer';
 import ReactQueryProvider from '@/providers/ReactQueryProvider';
 import StoreProvider from '@/providers/StoreProvider';
 
@@ -21,10 +20,7 @@ export default function RootLayout({ children }) {
             <header className="fixed w-full top-0">
               <Nav />
             </header>
-            <main>{children}</main>
-            <footer className="fixed bottom-0 w-full">
-              <Footer />
-            </footer>
+            <main className="h-full pt-[70px]">{children}</main>
           </ReactQueryProvider>
         </StoreProvider>
       </body>

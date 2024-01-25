@@ -5,6 +5,19 @@ const DropdownContext = createContext();
 const Dropdown = (props) => {
   const [open, setOpen] = useState(false);
   const [buttonPosition, setButtonPosition] = useState(null);
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [dropdownRef]);
 
   return (
     <DropdownContext.Provider
@@ -14,7 +27,7 @@ const Dropdown = (props) => {
         setButtonPosition,
         buttonPosition,
       }}>
-      <div className="flex flex-col gap-[4px] relative">
+      <div ref={dropdownRef} className="flex flex-col gap-[4px] relative">
         {React.Children.map(props.children, (child) =>
           React.cloneElement(child, {
             setOpen,
@@ -30,11 +43,8 @@ const Dropdown = (props) => {
 
 function Button(props) {
   const buttonRef = useRef(null);
-  //   const [buttonPosition, setButtonPosition] = useState(null);
   const { render, setButtonPosition, buttonPosition, ...rest } = props;
-
   const { open, setOpen } = useContext(DropdownContext);
-
   useEffect(() => {
     if (buttonRef && buttonRef.current) {
       setButtonPosition(buttonRef.current.getBoundingClientRect());
@@ -72,7 +82,7 @@ function List({ render }) {
             ...position,
           }}
           className={
-            'w-min absolute bg-white  max-h-[216px] z-[500] overflow-scroll shadow-[0px_2px_4px_-1px_rgba(0,0,0,0.3),0px_4px_6px_-1px_rgba(0,0,0,0.1)] rounded rounded-t-0 '
+            'w-max absolute bg-white  max-h-[216px] z-[500] overflow-scroll shadow-[0px_2px_4px_-1px_rgba(0,0,0,0.3),0px_4px_6px_-1px_rgba(0,0,0,0.1)] rounded rounded-t-0 '
           }>
           {render(open, setOpen)}
         </ul>
@@ -83,9 +93,7 @@ function List({ render }) {
 
 function ListItem({ children, value }) {
   return (
-    <li
-      className="h-[50px] flex items-center border-b px-[40px] text-gray-900 text-sm hover:bg-gray-50"
-      onMouseDown={() => {}}>
+    <li className=" flex items-center border-b  text-gray-900 text-sm hover:bg-gray-50" onMouseDown={() => {}}>
       {children}
     </li>
   );
