@@ -1,3 +1,4 @@
+import Header from '@/components/Nav';
 export default function Home() {
-  return <main className="">Home</main>;
+  return <div className="">Home</div>;
 }

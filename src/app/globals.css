@@ -17,6 +17,35 @@
 }
 
 body {
+  font-size: 16px;
+  height: 100%;
+}
+
+main {
+  padding-block: 100px;
+  max-width: 1248px;
+  margin-inline: auto;
+  padding-inline: 24px;
+  height: 100%;
+}
+
+header,
+footer {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  background-color: #f8f9fa;
+  padding-inline: 24px;
+}
+
+input {
+  font-size: 14px;
+  color: '#111827';
+  border-radius: 0.5rem;
+  padding: 6px 12px;
+  height: 40px;
+  width: 100%;
+  border: 1px solid #d1d5db;
 }
 
 @layer utilities {
