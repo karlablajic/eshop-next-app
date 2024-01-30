@@ -20,6 +20,7 @@ const NavDropdown = () => {
               <>
                 <Dropdown.ListItem>
                   <button
+                    className="flex items-center gap-2 px-[16px] py-[8px] min-w-[150px] h-[40px] text-xs"
                     onClick={() => {
                       setOpen(!open);
                       if (isAdmin) router.push('/dashboard');
@@ -30,6 +31,7 @@ const NavDropdown = () => {
                 </Dropdown.ListItem>
                 <Dropdown.ListItem>
                   <button
+                    className="flex items-center gap-2 px-[16px] py-[8px] min-w-[150px] h-[40px] text-xs"
                     onClick={() => {
                       setOpen(!open);
                       dispatch(removeUser());
