@@ -41,9 +41,11 @@ footer {
   align-items: center;
   background-color: #f8f9fa;
   padding-inline: 24px;
+  outline: none;
 }
 
-input {
+input,
+textarea {
   font-size: 14px;
   color: '#111827';
   border-radius: 0.5rem;
@@ -51,6 +53,13 @@ input {
   height: 40px;
   width: 100%;
   border: 1px solid #d1d5db;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #6b7280;
+  font-size: 14px;
+  line-height: 20px;
 }
 
 @layer utilities {

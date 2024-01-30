@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import ButtonsSlider from '@/components/ButtonsSlider';
 
-const DashboardOptions = ({ options = [], onOptionClick }) => {
+const DashboardOptions = ({ options = [], onOptionClick = () => {} }) => {
   return (
     <ButtonsSlider>
       <ButtonsSlider.List

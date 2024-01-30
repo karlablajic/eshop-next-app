@@ -3,6 +3,7 @@ import './globals.css';
 import Nav from '@/components/Nav';
 import ReactQueryProvider from '@/providers/ReactQueryProvider';
 import StoreProvider from '@/providers/StoreProvider';
+import { Toaster } from 'react-hot-toast';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -21,6 +22,7 @@ export default function RootLayout({ children }) {
               <Nav />
             </header>
             <main className="h-full pt-[70px]">{children}</main>
+            <Toaster />
           </ReactQueryProvider>
         </StoreProvider>
       </body>

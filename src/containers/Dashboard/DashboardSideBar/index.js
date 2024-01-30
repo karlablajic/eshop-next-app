@@ -5,8 +5,6 @@ const DashboardSideBar = ({ options = [], currentOption, onOptionClick }) => {
   return (
     <ul className="w-[250px]">
       {options.map((option) => {
-        console.log(option.id === currentOption);
-
         return (
           <li
             key={option.id}

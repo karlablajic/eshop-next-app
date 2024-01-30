@@ -38,7 +38,6 @@ const SignUpForm = () => {
     password: Yup.string().required('Password is required'),
   });
   const formik = useFormik({
-    validateOnMount: true,
     initialValues: {
       name: '',
       email: '',

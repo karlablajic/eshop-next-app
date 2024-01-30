@@ -14,6 +14,7 @@ const ActionsDropdown = ({ productId = '' }) => {
   });
 
   const onProductDelete = () => {
+    console.log('DELETE');
     deleteProduct(productId);
   };
 

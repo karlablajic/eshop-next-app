@@ -16,8 +16,6 @@ const SignInForm = () => {
   const router = useRouter();
   const dispatch = useDispatch();
 
-  const user = useSelector((state) => state.user);
-
   const onLoginSuccess = (data) => {
     dispatch(setUser(data.data));
     router.push('/');
@@ -31,6 +29,7 @@ const SignInForm = () => {
     error: loginError,
     mutate,
     isError: isErrorLogin,
+    isPending: isPendingLogin,
   } = useLogin({
     onSuccess: onLoginSuccess,
     onError: onLoginError,
@@ -41,7 +40,6 @@ const SignInForm = () => {
     password: Yup.string().required('Password is required'),
   });
   const formik = useFormik({
-    validateOnMount: true,
     initialValues: {
       email: '',
       password: '',
@@ -75,7 +73,7 @@ const SignInForm = () => {
             error={formik.errors.password}
           />
           {isErrorLogin && <span className="text-center text-red-500">{loginError?.response?.data}</span>}
-          <Button label={'Log in'} type="submit" />
+          <Button label={'Log in'} type="submit" loading={isPendingLogin} />
           <span className="text-xs text-gray-500 text-center">
             You don't have account?{' '}
             <span className="text-blue-500 ">

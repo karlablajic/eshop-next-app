@@ -1,5 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
-import { postProduct, deleteProduct } from '@/api/products';
+import { postProduct, deleteProduct, postImages } from '@/api/products';
 import { useSelector } from 'react-redux';
 
 export const usePostProduct = (options) => {
@@ -15,6 +15,15 @@ export const useDeleteProduct = (options) => {
   return useMutation({
     mutationFn: async (productId) => {
       return deleteProduct(productId, user.userData._id);
+    },
+    ...options,
+  });
+};
+
+export const usePostImages = (options) => {
+  return useMutation({
+    mutationFn: async (images) => {
+      return postImages(images);
     },
     ...options,
   });

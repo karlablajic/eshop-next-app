@@ -1,61 +1,24 @@
 import { createColumnHelper, flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table';
 import * as React from 'react';
-// import { DefaultCell, ClientCell, DateCell, ActionsCell, HeaderCell, StatusCell } from '../TableCells';
-import PropTypes from 'prop-types';
-// import NoFormsSent from '/public/icons/no-forms-sent.svg';
-// import { downloadPdf } from '@components/Pdf/generatePdf';
-import Image from 'next/image';
 import { useFetchProducts } from '../queries/queries';
-// import { useFetchOnlineFormsTypes } from 'containers/OnlineForms/queries/queries';
-import { HiDotsHorizontal } from 'react-icons/hi';
 import ActionsDropdown from './ActionsDropdown';
 const columnHelper = createColumnHelper();
 
 const columns = [
   columnHelper.accessor('_id', {
-    header: () => <p>Id</p>,
-    // cell: ({ info }) => <DefaultCell label={info.getValue()} />,
+    header: () => <p>ID</p>,
     minSize: 280,
   }),
   columnHelper.accessor('name', {
     header: () => <p>FORM TYPE</p>,
-    // cell: ({ info }) => <DefaultCell label={info.getValue()?.name} />,
     minSize: 258,
   }),
   columnHelper.accessor('price', {
     header: () => <p>PRICE</p>,
-
-    // cell: ({ info }) => {
-    //   const firstName = info?.row?.original?.client_first_name;
-    //   const lastName = info?.row?.original?.client_last_name;
-    //   const fullName = (firstName ?? '') + ' ' + (lastName ?? '');
-    //   return (
-    //     <ClientCell
-    //       imgSrc="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
-    //       name={fullName}
-    //       email={info.getValue()}
-    //     />
-    //   );
-    // },
     minSize: 280,
   }),
   columnHelper.accessor('description', {
     header: () => <p>DESCRIPTION</p>,
-
-    // cell: ({ info }) => {
-    //   const firstName = info?.row?.original?.client_first_name;
-    //   const lastName = info?.row?.original?.client_last_name;
-    //   const fullName = (firstName ?? '') + ' ' + (lastName ?? '');
-    //   return (
-    //     <StatusCell
-    //       status={info.getValue()}
-    //       formPublicIdentifier={info.row.original.public_identifier}
-    //       clientEmail={info.row.original.client_email}
-    //       formTitle={info.row.original.form_type.name}
-    //       clientName={fullName}
-    //     />
-    //   );
-    // },
     minSize: 150,
   }),
   columnHelper.accessor('actions', {
@@ -67,27 +30,6 @@ const columns = [
         </button>
       );
     },
-    // cell: ({ info, onDeleteForm }) => {
-    //   const formTypeId = info.row.original.form_type.id;
-    //   const { data, isSuccess } = useFetchOnlineFormsTypes();
-    //   const onDownloadPdf = async () => {
-    //     if (isSuccess && formTypeId) {
-    //       const typeData = data?.data?.find((type) => type.id === formTypeId);
-    //       downloadPdf(typeData.content, false, info.row.original.submitted_answers, typeData.name);
-    //     }
-    //   };
-    //   return (
-    //     <ActionsCell
-    //       formId={info.row.original.id}
-    //       onDownloadPdf={() => {
-    //         onDownloadPdf();
-    //       }}
-    //       onDeleteForm={() => {
-    //         onDeleteForm(info.row.original.id);
-    //       }}
-    //     />
-    //   );
-    // },
     minSize: 150,
   }),
 ];

@@ -1,3 +1,4 @@
+import axios from 'axios';
 import axiosInstance from './axios';
 
 export const fetchProducts = () => {
@@ -14,4 +15,21 @@ export const deleteProduct = (productId, userId) => {
 
 export const patchProduct = (productId) => {
   return axiosInstance.patch('products', productId);
+};
+
+export const postImages = async (images) => {
+  const requests = images.map((image) => {
+    let formData = new FormData();
+    formData.append('file', image.file);
+    formData.append('upload_preset', 'klqcoz77');
+    return axios.post('https://api.cloudinary.com/v1_1/dxopypyfp/image/upload', formData);
+  });
+
+  let data = [];
+  const responses = await axios.all(requests);
+  responses.forEach((resp) => {
+    data.push(resp.data);
+  });
+
+  return data;
 };
