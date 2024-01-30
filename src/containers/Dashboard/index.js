@@ -8,7 +8,7 @@ import { FaTruck } from 'react-icons/fa';
 import { FaRegUser } from 'react-icons/fa';
 import Button from '@/components/Buttons/Button';
 import { useRouter } from 'next/navigation';
-
+import ClientsTable from './ClientsTable/ClientsTable';
 const Dashboard = () => {
   const router = useRouter();
   const options = useMemo(() => {
@@ -50,7 +50,8 @@ const Dashboard = () => {
           <DashboardSideBar options={options} onOptionClick={setCurrentOption} currentOption={currentOption} />
         </div>
         <div className="overflow-scroll border border-t-0 w-full">
-          <ProductsTable />
+          {currentOption.id === 1 && <ProductsTable />}
+          {currentOption.id === 3 && <ClientsTable />}
         </div>
       </div>
     </div>

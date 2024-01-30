@@ -1,56 +1,28 @@
 import { createColumnHelper, flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table';
 import * as React from 'react';
-import { useFetchProducts } from '../queries/queries';
-import ActionsDropdown from './ActionsDropdown';
-import Image from 'next/image';
+import { useFetchUsers } from '../queries/queries';
+
 const columnHelper = createColumnHelper();
 
 const columns = [
-  columnHelper.accessor('images', {
-    header: () => <p></p>,
-    cell: (info) => {
-      return (
-        <>
-          {!!info.row.original?.pictures?.length ? (
-            <Image
-              src={info.row.original.pictures[0]?.url}
-              className="min-w-[140px] min-h-[140] object-contain"
-              width={140}
-              height={140}
-              alt=""
-            />
-          ) : (
-            <div className="border min-w-[140px] min-h-[140px] grow flex items-center justify-center text-gray-400">
-              <span>No image added</span>
-            </div>
-          )}
-        </>
-      );
-    },
-    minSize: 280,
-  }),
   columnHelper.accessor('_id', {
     header: () => <p>ID</p>,
     minSize: 280,
   }),
   columnHelper.accessor('name', {
-    header: () => <p>NAME</p>,
-    minSize: 258,
+    header: () => <p>CLIENT NAME</p>,
+    minSize: 500,
   }),
-  columnHelper.accessor('price', {
-    header: () => <p>PRICE</p>,
+  columnHelper.accessor('email', {
+    header: () => <p>EMAIL</p>,
     minSize: 280,
   }),
-  columnHelper.accessor('description', {
-    header: () => <p>DESCRIPTION</p>,
-    minSize: 150,
-  }),
-  columnHelper.accessor('actions', {
-    header: () => <p>ACTIONS</p>,
+  columnHelper.accessor('orders', {
+    header: () => <p>ORDERS NO</p>,
     cell: (info) => {
       return (
         <div className="flex justify-center items-center w-full">
-          <ActionsDropdown productId={info.row.original._id} />
+          <span>{info.row.original.orders.length}</span>
         </div>
       );
     },
@@ -58,9 +30,8 @@ const columns = [
   }),
 ];
 
-const ProductsTable = ({ onlineForms, onDeleteForm }) => {
-  const { data } = useFetchProducts();
-
+const ClientsTable = ({ onlineForms, onDeleteForm }) => {
+  const { data } = useFetchUsers();
   const table = useReactTable({
     data: data?.data ?? [],
     columns,
@@ -117,4 +88,4 @@ const ProductsTable = ({ onlineForms, onDeleteForm }) => {
   );
 };
 
-export default ProductsTable;
+export default ClientsTable;
