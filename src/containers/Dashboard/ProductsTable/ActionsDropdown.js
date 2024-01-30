@@ -5,8 +5,10 @@ import { FaTrash } from 'react-icons/fa';
 import { MdEdit } from 'react-icons/md';
 import { useDeleteProduct } from '../queries/mutations';
 import { useFetchProducts } from '../queries/queries';
+import { useRouter } from 'next/navigation';
 
 const ActionsDropdown = ({ productId = '' }) => {
+  const router = useRouter();
   const { refetch: refecthProducts } = useFetchProducts();
 
   const { mutate: deleteProduct } = useDeleteProduct({
@@ -14,7 +16,6 @@ const ActionsDropdown = ({ productId = '' }) => {
   });
 
   const onProductDelete = () => {
-    console.log('DELETE');
     deleteProduct(productId);
   };
 
@@ -23,7 +24,7 @@ const ActionsDropdown = ({ productId = '' }) => {
       <Dropdown.Button
         render={(open, setOpen) => (
           <button onClick={() => setOpen(!open)}>
-            <HiDotsHorizontal size={20} color={'#6B7280'} />
+            <HiDotsHorizontal size={20} color={'#6B7280'} />{' '}
           </button>
         )}
       />
@@ -37,7 +38,7 @@ const ActionsDropdown = ({ productId = '' }) => {
                   className="flex items-center gap-2 px-[16px] py-[8px] min-w-[200px] h-[40px] text-xs"
                   onClick={() => {
                     setOpen(!open);
-                    // dispatch(removeUser());
+                    router.push(`/product/update-product/${productId}`);
                   }}>
                   <MdEdit size={20} color={'#6B7280'} />
                   Edit product

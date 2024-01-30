@@ -42,7 +42,7 @@ const Dashboard = () => {
           <DashboardOptions options={options} onOptionClick={setCurrentOption} />
         </div>
         <div className="max-w-[120px] ">
-          <Button label={'Add product'} onClick={() => router.push('/create-product')} className="text-sm" />
+          <Button label={'Add product'} onClick={() => router.push('/product/create-product')} className="text-sm" />
         </div>
       </div>
       <div className="flex md:h-[calc(100vh-170px)] h-[calc(100vh-236px)] border border-t-0">

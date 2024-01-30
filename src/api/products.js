@@ -4,6 +4,9 @@ import axiosInstance from './axios';
 export const fetchProducts = () => {
   return axiosInstance.get('products');
 };
+export const fetchProduct = (id) => {
+  return axiosInstance.get(`products/${id}`);
+};
 
 export const postProduct = (productData) => {
   return axiosInstance.post('products', productData);
@@ -13,8 +16,8 @@ export const deleteProduct = (productId, userId) => {
   return axiosInstance.delete(`products/${productId}`, { data: { user_id: userId } });
 };
 
-export const patchProduct = (productId) => {
-  return axiosInstance.patch('products', productId);
+export const patchProduct = (productId, productData) => {
+  return axiosInstance.patch(`products/${productId}`, productData);
 };
 
 export const postImages = async (images) => {

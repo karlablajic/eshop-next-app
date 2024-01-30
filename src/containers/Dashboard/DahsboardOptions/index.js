@@ -10,7 +10,7 @@ const DashboardOptions = ({ options = [], onOptionClick = () => {} }) => {
             <>
               {options.map((option) => {
                 return (
-                  <ButtonsSlider.ListItem onClick={() => onOptionClick(option)} value={option}>
+                  <ButtonsSlider.ListItem key={option.id} onClick={() => onOptionClick(option)} value={option}>
                     {option.label}
                   </ButtonsSlider.ListItem>
                 );

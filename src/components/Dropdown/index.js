@@ -45,23 +45,20 @@ function Button(props) {
   const buttonRef = useRef(null);
   const { render, setButtonPosition, buttonPosition, ...rest } = props;
   const { open, setOpen } = useContext(DropdownContext);
+
   useEffect(() => {
     if (buttonRef && buttonRef.current) {
       setButtonPosition(buttonRef.current.getBoundingClientRect());
     }
   }, []);
-  return (
-    <div>
-      <div ref={buttonRef} className="">
-        {render(open, setOpen)}
-      </div>
-    </div>
-  );
+
+  return <div ref={buttonRef}>{render(open, setOpen)}</div>;
 }
 
 function List({ render }) {
   const { open, setOpen, buttonPosition } = React.useContext(DropdownContext);
   const [position, setPosition] = useState({});
+
   useEffect(() => {
     if (buttonPosition) {
       const position = window.innerWidth - buttonPosition.right < buttonPosition.left ? 'left' : 'right';

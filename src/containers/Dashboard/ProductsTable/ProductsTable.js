@@ -2,9 +2,33 @@ import { createColumnHelper, flexRender, getCoreRowModel, useReactTable } from '
 import * as React from 'react';
 import { useFetchProducts } from '../queries/queries';
 import ActionsDropdown from './ActionsDropdown';
+import Image from 'next/image';
 const columnHelper = createColumnHelper();
 
 const columns = [
+  columnHelper.accessor('images', {
+    header: () => <p></p>,
+    cell: (info) => {
+      return (
+        <>
+          {!!info.row.original?.pictures?.length ? (
+            <Image
+              src={info.row.original.pictures[0]?.url}
+              className="min-w-[140px] min-h-[140] object-contain"
+              width={140}
+              height={140}
+              alt=""
+            />
+          ) : (
+            <div className="border min-w-[140px] min-h-[140px] grow flex items-center justify-center text-gray-400">
+              <span>No image added</span>
+            </div>
+          )}
+        </>
+      );
+    },
+    minSize: 280,
+  }),
   columnHelper.accessor('_id', {
     header: () => <p>ID</p>,
     minSize: 280,
@@ -25,9 +49,9 @@ const columns = [
     header: () => <p>ACTIONS</p>,
     cell: (info) => {
       return (
-        <button className="flex justify-center items-center w-full">
+        <div className="flex justify-center items-center w-full">
           <ActionsDropdown productId={info.row.original._id} />
-        </button>
+        </div>
       );
     },
     minSize: 150,

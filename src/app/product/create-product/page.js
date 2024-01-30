@@ -1,5 +1,5 @@
 import React from 'react';
-import CreateProductForm from '@/containers/Dashboard/CreateProductForm';
+import CreateProductForm from '@/containers/Dashboard/Product/CreateProductForm';
 
 const CreateProduct = () => {
   return <CreateProductForm />;
