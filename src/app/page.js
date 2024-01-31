@@ -1,10 +1,12 @@
 import Footer from '@/components/Footer';
+import HomeContainer from '@/containers/Home';
 export default function Home() {
   return (
-    <div className="">
-      <footer className="fixed bottom-0 w-full">
+    <div className="h-full w-full">
+      <HomeContainer />
+      {/* <footer className="absolute bottom-0 w-full">
         <Footer />
-      </footer>
+      </footer> */}
     </div>
   );
 }
