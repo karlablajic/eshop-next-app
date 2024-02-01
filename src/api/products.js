@@ -8,6 +8,10 @@ export const fetchProduct = (id) => {
   return axiosInstance.get(`products/${id}`);
 };
 
+export const fetchProductsByCategory = async (category) => {
+  return axiosInstance.get(`products/category/${category}`);
+};
+
 export const postProduct = (productData) => {
   return axiosInstance.post('products', productData);
 };
@@ -35,4 +39,8 @@ export const postImages = async (images) => {
   });
 
   return data;
+};
+
+export const addToCart = (userId, productId) => {
+  return axiosInstance.post('products', productData);
 };

@@ -3,7 +3,7 @@ import React from 'react';
 import Input from '@/components/Inputs/Input';
 import Button from '@/components/Buttons/Button';
 import Link from 'next/link';
-import { useLogin } from '../queries/mutations';
+import { useLogin } from '@/queries/auth/mutations';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';

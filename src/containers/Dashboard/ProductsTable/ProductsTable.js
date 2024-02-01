@@ -1,6 +1,6 @@
 import { createColumnHelper, flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table';
 import * as React from 'react';
-import { useFetchProducts } from '../queries/queries';
+import { useFetchProducts } from '@/queries/products/queries';
 import ActionsDropdown from './ActionsDropdown';
 import Image from 'next/image';
 const columnHelper = createColumnHelper();

@@ -27,7 +27,7 @@ const Dropdown = (props) => {
         setButtonPosition,
         buttonPosition,
       }}>
-      <div ref={dropdownRef} className="flex flex-col gap-[4px] relative">
+      <div ref={dropdownRef} className="flex flex-col gap-[4px] relative ">
         {React.Children.map(props.children, (child) =>
           React.cloneElement(child, {
             setOpen,
@@ -79,7 +79,7 @@ function List({ render }) {
             ...position,
           }}
           className={
-            'w-max absolute bg-white  max-h-[216px] z-[500] overflow-scroll shadow-[0px_2px_4px_-1px_rgba(0,0,0,0.3),0px_4px_6px_-1px_rgba(0,0,0,0.1)] rounded rounded-t-0 '
+            'w-max absolute bg-white  max-h-[216px] z-[999] overflow-scroll shadow-[0px_2px_4px_-1px_rgba(0,0,0,0.3),0px_4px_6px_-1px_rgba(0,0,0,0.1)] rounded rounded-t-0 '
           }>
           {render(open, setOpen)}
         </ul>

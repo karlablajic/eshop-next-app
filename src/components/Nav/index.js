@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 import Button from '@/components/Buttons/Button';
 
 const Header = () => {
-  const { isLoggedIn, userData } = useSelector((state) => state.user);
+  const { isLoggedIn } = useSelector((state) => state.user);
   const router = useRouter();
   return (
     <nav className="flex grow justify-between">

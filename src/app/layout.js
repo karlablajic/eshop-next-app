@@ -14,11 +14,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="h-full">
+    <html lang="en" className="h-full ">
       <body className={inter.className}>
         <StoreProvider>
           <ReactQueryProvider>
-            <header className="fixed w-full top-0">
+            <header className="fixed w-full top-0 z-[999]">
               <Nav />
             </header>
             <main className="h-full pt-[70px]">{children}</main>

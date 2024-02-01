@@ -9,6 +9,7 @@ import { FaRegUser } from 'react-icons/fa';
 import Button from '@/components/Buttons/Button';
 import { useRouter } from 'next/navigation';
 import ClientsTable from './ClientsTable/ClientsTable';
+
 const Dashboard = () => {
   const router = useRouter();
   const options = useMemo(() => {

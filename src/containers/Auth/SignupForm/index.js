@@ -2,7 +2,7 @@
 import React from 'react';
 import Input from '@/components/Inputs/Input';
 import Button from '@/components/Buttons/Button';
-import { useSignup } from '../queries/mutations';
+import { useSignup } from '@/queries/auth/mutations';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';

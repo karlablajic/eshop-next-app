@@ -1,11 +1,11 @@
 'use client';
 import React from 'react';
 import { useParams } from 'next/navigation';
-import { useFetchProductById } from '../queries/queries';
+import { useFetchProductById } from '@/queries/products/queries';
 import { useFormik, FormikProvider } from 'formik';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import { usePostImages, useUpdateProduct } from '../queries/mutations';
+import { usePostImages, useUpdateProduct } from '@/queries/products/mutations';
 import toast from 'react-hot-toast';
 import ProductForm from '../ProductForm';
 import * as Yup from 'yup';
@@ -36,7 +36,6 @@ const UpdateProductForm = () => {
         },
       };
     },
-    initialData: null,
   });
 
   const onUpdateProductSuccess = () => {

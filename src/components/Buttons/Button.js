@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import Spinner from '../Spinner';
+
 const Button = ({ loading = false, className = '', onClick = () => {}, label = '', ...rest }) => {
   return (
     <button

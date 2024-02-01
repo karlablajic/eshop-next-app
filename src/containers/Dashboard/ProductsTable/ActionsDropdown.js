@@ -3,8 +3,9 @@ import Dropdown from '@/components/Dropdown';
 import { HiDotsHorizontal } from 'react-icons/hi';
 import { FaTrash } from 'react-icons/fa';
 import { MdEdit } from 'react-icons/md';
-import { useDeleteProduct } from '../queries/mutations';
-import { useFetchProducts } from '../queries/queries';
+
+import { useFetchProducts } from '@/queries/products/queries';
+import { useDeleteProduct } from '@/queries/products/mutations';
 import { useRouter } from 'next/navigation';
 
 const ActionsDropdown = ({ productId = '' }) => {

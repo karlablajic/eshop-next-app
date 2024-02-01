@@ -4,7 +4,8 @@ import React from 'react';
 import { useFormik, FormikProvider } from 'formik';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import { usePostProduct, usePostImages } from '../queries/mutations';
+
+import { usePostProduct, usePostImages } from '@/queries/products/mutations';
 import toast from 'react-hot-toast';
 import ProductForm from '../ProductForm';
 import * as Yup from 'yup';

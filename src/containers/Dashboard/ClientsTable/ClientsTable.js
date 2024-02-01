@@ -1,6 +1,6 @@
 import { createColumnHelper, flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table';
 import * as React from 'react';
-import { useFetchUsers } from '../queries/queries';
+import { useFetchUsers } from '@/queries/users/queries';
 
 const columnHelper = createColumnHelper();
 
