@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { use } from 'react';
 import { useParams } from 'next/navigation';
 import { useFetchProductById } from '@/queries/products/queries';
 import Carousel from '@/components/Carousel';
@@ -9,10 +9,17 @@ import Button from '@/components/Buttons/Button';
 import ProductsList from '@/components/ProductsList';
 import { useSelector } from 'react-redux';
 import Link from 'next/link';
+import { useAddProductToCart } from '@/queries/cart/mutations';
+import { toast } from 'react-hot-toast';
+import LoadingScreen from '@/components/LoadingScreen';
+import { useDispatch } from 'react-redux';
+import { setUserData } from '@/store/userSlice';
 
 const ProductDetails = () => {
   const { slug } = useParams();
   const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+
   const { data: dataProduct, isLoading: isLoadingFetchProduct } = useFetchProductById(slug, {
     enabled: !!slug,
     select: (data) => {
@@ -26,6 +33,19 @@ const ProductDetails = () => {
     },
   });
 
+  const onAddToCartSuccess = ({ data }) => {
+    dispatch(setUserData(data));
+    toast.success('Product successfully added to cart!', { position: 'bottom-left' });
+  };
+  const onAddToCartError = () => {
+    toast.success('Unable to add product to cart!', { position: 'bottom-left' });
+  };
+
+  const { mutate: mutateAddToCart, isPending: isPendingAddToCart } = useAddProductToCart({
+    onSuccess: onAddToCartSuccess,
+    onError: onAddToCartError,
+  });
+
   const AddToCartSchema = Yup.object().shape({
     quantity: Yup.number().required('Email is required.'),
   });
@@ -35,10 +55,17 @@ const ProductDetails = () => {
     },
     validationSchema: AddToCartSchema,
     onSubmit: (values) => {
-      console.log('subtmi');
-      // mutate(values);
+      mutateAddToCart({
+        productId: dataProduct.product._id,
+        price: dataProduct.product.price,
+      });
     },
   });
+
+  if (isLoadingFetchProduct) {
+    return <LoadingScreen />;
+  }
+
   return (
     <div className="max-w-[1248px] mx-auto px-[24px] pt-[50px] ">
       {!isLoadingFetchProduct && (
@@ -57,7 +84,7 @@ const ProductDetails = () => {
               </div>
 
               {!user.isAdmin && user.isLoggedIn && (
-                <div className="flex gap-4 w-full justify-center">
+                <form className="flex gap-4 w-full justify-center" onSubmit={formik.handleSubmit}>
                   <select
                     onChange={(e) => {
                       formik.setFieldValue('qauntity', e.target.value);
@@ -69,8 +96,8 @@ const ProductDetails = () => {
                       </option>
                     ))}
                   </select>
-                  <Button label="Add to cart" className="w-full max-w-[200px]" />
-                </div>
+                  <Button label="Add to cart" className="w-full max-w-[200px]" loading={isPendingAddToCart} />
+                </form>
               )}
               {user.isAdmin && user.isLoggedIn && (
                 <div className="flex gap-4 w-full justify-center">

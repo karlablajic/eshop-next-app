@@ -22,7 +22,6 @@ export default function Carousel({ slides }) {
           transform: `translateX(-${current * 100}%)`,
         }}>
         {slides.map((image) => {
-          // return <div className="h-[400px] w-[400px] bg-red-100">f</div>;
           return <img key={image.asset_id} src={image.url} className="object-contain" />;
         })}
       </div>

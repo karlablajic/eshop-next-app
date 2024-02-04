@@ -58,7 +58,7 @@ const columns = [
   }),
 ];
 
-const ProductsTable = ({ onlineForms, onDeleteForm }) => {
+const ProductsTable = () => {
   const { data } = useFetchProducts();
 
   const table = useReactTable({

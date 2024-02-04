@@ -30,7 +30,7 @@ const columns = [
   }),
 ];
 
-const ClientsTable = ({ onlineForms, onDeleteForm }) => {
+const ClientsTable = () => {
   const { data } = useFetchUsers();
   const table = useReactTable({
     data: data?.data ?? [],
