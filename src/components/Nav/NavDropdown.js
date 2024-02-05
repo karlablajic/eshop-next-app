@@ -29,6 +29,18 @@ const NavDropdown = () => {
                     {isAdmin ? 'Dashboard' : 'Cart'}
                   </button>
                 </Dropdown.ListItem>
+                {!isAdmin && (
+                  <Dropdown.ListItem>
+                    <button
+                      className="flex items-center gap-2 px-[16px] py-[8px] min-w-[150px] h-[40px] text-xs"
+                      onClick={() => {
+                        setOpen(!open);
+                        router.push('/user-orders');
+                      }}>
+                      My orders
+                    </button>
+                  </Dropdown.ListItem>
+                )}
                 <Dropdown.ListItem>
                   <button
                     className="flex items-center gap-2 px-[16px] py-[8px] min-w-[150px] h-[40px] text-xs"

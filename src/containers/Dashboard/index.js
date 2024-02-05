@@ -9,6 +9,7 @@ import { FaRegUser } from 'react-icons/fa';
 import Button from '@/components/Buttons/Button';
 import { useRouter } from 'next/navigation';
 import ClientsTable from './ClientsTable/ClientsTable';
+import OrdersTable from './OrdersTable';
 
 const Dashboard = () => {
   const router = useRouter();
@@ -52,6 +53,7 @@ const Dashboard = () => {
         </div>
         <div className="overflow-scroll border border-t-0 w-full">
           {currentOption.id === 1 && <ProductsTable />}
+          {currentOption.id === 2 && <OrdersTable />}
           {currentOption.id === 3 && <ClientsTable />}
         </div>
       </div>
