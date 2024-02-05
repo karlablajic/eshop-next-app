@@ -1,8 +1,9 @@
 'use client';
-import React from 'react';
 import UpdateProductForm from '@/containers/Dashboard/Product/UpdateProductForm';
+import withAuth from '@/utils/hoc/withAuth';
+
 const Page = () => {
   return <UpdateProductForm />;
 };
 
-export default Page;
+export default withAuth(Page);

@@ -1,8 +1,9 @@
-import React from 'react';
+'use client';
 import CreateProductForm from '@/containers/Dashboard/Product/CreateProductForm';
+import withAuth from '@/utils/hoc/withAuth';
 
 const CreateProduct = () => {
   return <CreateProductForm />;
 };
 
-export default CreateProduct;
+export default withAuth(CreateProduct);

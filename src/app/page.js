@@ -1,6 +1,9 @@
+'use client';
 import Footer from '@/components/Footer';
 import HomeContainer from '@/containers/Home';
-export default function Home() {
+import withAuth from '@/utils/hoc/withAuth';
+
+const Home = () => {
   return (
     <div className="h-full w-full">
       <HomeContainer />
@@ -9,4 +12,6 @@ export default function Home() {
       </footer> */}
     </div>
   );
-}
+};
+
+export default withAuth(Home);
