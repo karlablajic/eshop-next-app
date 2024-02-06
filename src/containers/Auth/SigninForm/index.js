@@ -8,7 +8,6 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { removeUser, setUser } from '@/store/userSlice';
-import { useSelector } from 'react-redux';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 
@@ -21,7 +20,7 @@ const SignInForm = () => {
     router.push('/');
   };
 
-  const onLoginError = () => {
+  const onLoginError = (e) => {
     dispatch(removeUser());
   };
 
@@ -72,7 +71,7 @@ const SignInForm = () => {
             value={formik.values.password}
             error={formik.errors.password}
           />
-          {isErrorLogin && <span className="text-center text-red-500">{loginError?.response?.data}</span>}
+          {isErrorLogin && <span className="text-center text-red-500">{loginError?.response?.data?.message}</span>}
           <Button label={'Log in'} type="submit" loading={isPendingLogin} />
           <span className="text-xs text-gray-500 text-center">
             You don't have account?{' '}

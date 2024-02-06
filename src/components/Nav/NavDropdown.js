@@ -4,6 +4,7 @@ import Button from '@/components/Buttons/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeUser } from '@/store/userSlice';
 import { useRouter } from 'next/navigation';
+import storage from 'redux-persist/lib/storage';
 
 const NavDropdown = () => {
   const { userData, isAdmin } = useSelector((state) => state.user);
@@ -47,6 +48,7 @@ const NavDropdown = () => {
                     onClick={() => {
                       setOpen(!open);
                       dispatch(removeUser());
+                      storage.removeItem('persist:root');
                     }}>
                     Logout
                   </button>

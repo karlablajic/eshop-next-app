@@ -78,7 +78,6 @@ const Cart = () => {
     onError: onPostOrderError,
   });
 
-  console.log(dataPostOrder);
   const formikCard = useFormik({
     initialValues: {
       card_number: '',
@@ -89,7 +88,6 @@ const Cart = () => {
     validateOnChange: true,
     validateOnMount: true,
     onSubmit: async (values) => {
-      console.log('submit formik carrd');
       const { country, address } = formik.values;
       const orderData = {
         userId: user.userData._id,
@@ -97,7 +95,7 @@ const Cart = () => {
         country,
         address,
       };
-      console.log(orderData);
+
       mutatePostOrder(orderData);
     },
   });

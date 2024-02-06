@@ -3,6 +3,7 @@ import * as React from 'react';
 import { useFetchUsersOrders } from '@/queries/orders/queries';
 import { createColumnHelper, flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table';
 import LoadingScreen from '@/components/LoadingScreen';
+import clsx from 'clsx';
 
 const columnHelper = createColumnHelper();
 
@@ -16,10 +17,12 @@ const columns = [
     cell: (info) => {
       const isShipped = info.row.original.status === 'shipped';
       return (
-        <div>
-          <div className={`capitalize bg-${isShipped ? 'green' : 'orange'}-500 text-white px-3 py-1 rounded-xl`}>
-            <span>{info.row.original.status}</span>
-          </div>
+        <div
+          className={clsx('capitalize  text-white px-3 py-1 rounded-xl text-xs', {
+            ['bg-green-500 ']: isShipped,
+            ['bg-orange-500']: !isShipped,
+          })}>
+          <span>{info.row.original.status}</span>
         </div>
       );
     },

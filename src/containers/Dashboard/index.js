@@ -36,7 +36,6 @@ const Dashboard = () => {
     ];
   }, []);
   const [currentOption, setCurrentOption] = useState(options[0]);
-
   return (
     <div className="h-full w-full flex flex-col gap-[32px]">
       <div className="flex flex-col md:flex-row justify-center md:justify-end items-center pr-[24px] gap-[16px]">

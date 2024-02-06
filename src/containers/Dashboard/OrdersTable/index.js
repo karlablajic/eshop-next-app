@@ -116,6 +116,7 @@ const columns = [
 
 const OrdersTable = () => {
   const { data: dataOrders, isLoading: isLoadingOrders } = useFetchOrders();
+
   const { isLoading: isLoadingProducts } = useFetchProducts();
 
   const table = useReactTable({
